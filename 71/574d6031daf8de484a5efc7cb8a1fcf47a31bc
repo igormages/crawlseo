@@ -1,0 +1,39 @@
+app/api/cron/gsc-sync/route.ts
+  s_b844e791d6deca::t_6833529dec5ad6 1-39
+lib/auth.ts
+  s_b844e791d6deca::t_93599f6ae57dad 26-37
+app/api/cron/crawl/route.ts
+  s_b844e791d6deca::t_4f4e3288eb91b1 1-54
+.env.example
+  s_b844e791d6deca::t_7307df9246ad07 38-41,57,59-62
+lib/cron.ts
+  s_b844e791d6deca::t_59978210cbc06c 1-10
+app/api/cron/vitals/route.ts
+  s_b844e791d6deca::t_6055aca99f70ed 1-46
+lib/redis.ts
+  s_b844e791d6deca::t_6aa8629750b9b6 1-18
+package.json
+  s_b844e791d6deca::t_297b20f2cc03e2 37
+vercel.json
+  s_b844e791d6deca::t_a6c87101092766 3,16-45,47
+app/api/cron/alerts/route.ts
+  s_b844e791d6deca::t_3ec645af5debd3 1-36
+package-lock.json
+  s_b844e791d6deca::t_7de783efc5829d 10,17,3326-3334,10242-10247
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.15",
+  "base_commit_sha": "71574d6031daf8de484a5efc7cb8a1fcf47a31bc",
+  "prompts": {},
+  "sessions": {
+    "s_b844e791d6deca": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "d97390ef-4e60-4415-bcfb-c2ace030f2b7",
+        "model": "grok-4.5"
+      },
+      "human_author": "Igor Magès <igor@mages.pro>"
+    }
+  }
+}
