@@ -1,6 +1,6 @@
 {
   "framework": "nextjs",
-  "regions": ["iad1"],
+  "regions": ["fra1"],
   "functions": {
     "app/api/sites/[siteId]/crawl/route.ts": {
       "maxDuration": 60
@@ -13,6 +13,36 @@
     },
     "app/api/gsc/sync/route.ts": {
       "maxDuration": 60
+    },
+    "app/api/cron/gsc-sync/route.ts": {
+      "maxDuration": 300
+    },
+    "app/api/cron/crawl/route.ts": {
+      "maxDuration": 300
+    },
+    "app/api/cron/vitals/route.ts": {
+      "maxDuration": 300
+    },
+    "app/api/cron/alerts/route.ts": {
+      "maxDuration": 60
     }
-  }
+  },
+  "crons": [
+    {
+      "path": "/api/cron/gsc-sync",
+      "schedule": "0 2 * * *"
+    },
+    {
+      "path": "/api/cron/alerts",
+      "schedule": "0 * * * *"
+    },
+    {
+      "path": "/api/cron/crawl",
+      "schedule": "0 0 * * 0"
+    },
+    {
+      "path": "/api/cron/vitals",
+      "schedule": "0 3 * * 0"
+    }
+  ]
 }

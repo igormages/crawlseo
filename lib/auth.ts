@@ -23,6 +23,18 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
     }),
   ],
   callbacks: {
+    async signIn({ user }) {
+      // Allow existing users always; block new sign-ups when registration is disabled
+      if (process.env.DISABLE_REGISTRATION === "true") {
+        if (!user.email) return false;
+        const existing = await db.user.findUnique({
+          where: { email: user.email },
+          select: { id: true },
+        });
+        if (!existing) return false;
+      }
+      return true;
+    },
     async session({ session, user }) {
       if (session.user) {
         session.user.id = user.id;
