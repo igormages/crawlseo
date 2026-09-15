@@ -1,14 +1,12 @@
-import { auth, googleAuthEnabled } from "@/lib/auth";
+import { signIn, auth } from "@/lib/auth";
 import { redirect } from "next/navigation";
-import { LoginForm } from "@/components/auth/login-form";
+import { Button } from "@/components/ui/button";
 
 export default async function LoginPage() {
   const session = await auth();
   if (session) {
     redirect("/dashboard");
   }
-
-  const registrationOpen = process.env.DISABLE_REGISTRATION !== "true";
 
   return (
     <div className="relative flex min-h-screen items-center justify-center overflow-hidden bg-background px-4">
@@ -40,17 +38,20 @@ export default async function LoginPage() {
             Sign in
           </h2>
           <p className="mt-2 text-atom-body text-muted-foreground">
-            {registrationOpen
-              ? "Sign in with email, or create an account."
-              : "Sign in with your existing account."}
+            Connect Google Search Console with read-only access.
           </p>
 
-          <div className="mt-6">
-            <LoginForm
-              googleEnabled={googleAuthEnabled}
-              registrationOpen={registrationOpen}
-            />
-          </div>
+          <form
+            className="mt-6"
+            action={async () => {
+              "use server";
+              await signIn("google", { redirectTo: "/dashboard" });
+            }}
+          >
+            <Button type="submit" size="lg" className="w-full">
+              Continue with Google
+            </Button>
+          </form>
 
           <div className="mt-6 space-y-2 border-t border-border pt-5 text-atom-caption text-muted-foreground">
             <p>· Keywords, positions, CTR from GSC</p>
